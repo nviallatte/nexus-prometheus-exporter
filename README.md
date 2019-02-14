@@ -1,6 +1,24 @@
-# prometheus-jsonpath-exporter
+# prometheus-nexus-exporter
 
-Converts json data from a Nexus 3 from endpoint `http://<nexus>/service/metrics/data`. This project is forked from https://github.com/project-sunbird/prometheus-jsonpath-exporter
+Converts json data from a Nexus 3 from endpoint `http://<nexus>/service/metrics/data`. 
+
+This project is forked from https://github.com/project-sunbird/prometheus-jsonpath-exporter
+
+### Run
+
+#### Using code (local)
+
+```
+# Ensure python 2.x and pip installed
+pip install -r app/requirements.txt
+python app/exporter.py example/config.yml
+```
+
+#### Using docker
+
+```
+docker run -p 9158:9158 -v $(pwd)/example/config.yml:/etc/prometheus-nexus-exporter/config.yml nviallatte/prometheus-nexus-exporter /etc/prometheus-nexus-exporter/config.yml
+```
 
 ### Config
 
@@ -18,21 +36,6 @@ metrics: # Default JSON metrics from /service/metrics/data
 - type: meters
   path: $.meters # Object Path format to scrape meters in the Nexus Json
 
-```
-### Run
-
-#### Using code (local)
-
-```
-# Ensure python 2.x and pip installed
-pip install -r app/requirements.txt
-python app/exporter.py example/config.yml
-```
-
-#### Using docker
-
-```
-docker run -p 9158:9158 -v $(pwd)/example/config.yml:/etc/prometheus-nexus-exporter/config.yml nviallatte/prometheus-nexus-exporter /etc/prometheus-nexus-exporter/config.yml
 ```
 
 ### Datas from Nexus
