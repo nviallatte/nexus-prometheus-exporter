@@ -44,33 +44,34 @@ This is a Json example retrieved from the Nexus 3 data endpoint. The `config.yml
 
 ```json
 {
-	"version": "3.0.0",
-	"gauges": {
-		"jvm.buffers.direct.capacity": {
-			"value": 135636938
-		},
-		"jvm.buffers.direct.count": {
-			"value": 68
+  "version": "3.0.0",
+  "gauges": {
+    "jvm.buffers.direct.capacity": {
+	  "value": 135636938
+	},
+	"jvm.buffers.direct.count": {
+      "value": 68
     },
     "..."
-  "meters": {
-		"com.sonatype.nexus.analytics.internal.ui.EventsComponent.clear.exceptions": {
-			"count": 0,
-			"m15_rate": 0.0,
-			"m1_rate": 0.0,
-			"m5_rate": 0.0,
-			"mean_rate": 0.0,
-			"units": "events/second"
-		},
-		"metrics.error": {
-			"count": 111,
-			"m15_rate": 8.904204078708139E-22,
-			"m1_rate": 4.5840990483670495E-274,
-			"m5_rate": 1.6245846951657174E-57,
-			"mean_rate": 9.885520410623464E-5,
-      "units": "events/second"
-    },
-    "..."
+    "meters": {
+	  "com.sonatype.nexus.analytics.internal.ui.EventsComponent.clear.exceptions": {
+	    "count": 0,
+		"m15_rate": 0.0,
+		"m1_rate": 0.0,
+		"m5_rate": 0.0,
+		"mean_rate": 0.0,
+		"units": "events/second"
+	  },
+	  "metrics.error": {
+	    "count": 111,
+	    "m15_rate": 8.904204078708139E-22,
+	    "m1_rate": 4.5840990483670495E-274,
+	    "m5_rate": 1.6245846951657174E-57,
+	    "mean_rate": 9.885520410623464E-5,
+        "units": "events/second"
+      },
+      "..."
+	}
   }
 }
 ```
