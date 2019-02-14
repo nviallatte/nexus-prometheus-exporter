@@ -23,6 +23,8 @@ class JsonPathCollector(object):
     info_request = urllib2.Request(config['json_data_url'])
     if config['basic_auth_user'] != "":
       info_request.add_header("Authorization", "Basic %s" % base64.standard_b64encode('%s:%s' % (config['basic_auth_user'], config['basic_auth_password'])))
+    if config['host'] != "":
+      info_request.add_header("Host", config['host'])
     result = json.loads(urllib2.urlopen(info_request).read())
     result_tree = Tree(result)
     for metric_config in config['metrics']:

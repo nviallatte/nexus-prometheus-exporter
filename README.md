@@ -25,6 +25,7 @@ docker run -p 9158:9158 -v $(pwd)/example/config.yml:/etc/prometheus-nexus-expor
 ```yml
 exporter_port: 9158 # Port on which prometheu can call this exporter to get metrics
 namespace: nexus
+host: <host_header> # Override Host Header if wanted
 log_level: debug|info|warn|error
 json_data_url: <url_with_scheme> # Url to get json data used for fetching metric values, and with the /service/metrics/data
 basic_auth_user: <username> # User to connect to Nexus. Optional, leave empty for empty Basic auth
