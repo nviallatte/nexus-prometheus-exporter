@@ -1,4 +1,4 @@
-exporter_port: 9158 # Port on which prometheu can call this exporter to get metrics
+exporter_port: 9158 # Port on which prometheus can call this exporter to get metrics
 namespace: nexus
 host: <host_header> # Override Host Header if wanted
 log_level: debug|info|warn|error

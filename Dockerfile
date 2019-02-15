@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.9
 
 # Adds testing package to repositories
 # Install needed packages. Notes:
@@ -26,7 +26,8 @@ RUN cd /usr/bin \
 
 COPY app /opt/prometheus-nexus-exporter
 
-RUN pip install -r /opt/prometheus-nexus-exporter/requirements.txt
+RUN pip install -r /opt/prometheus-nexus-exporter/requirements.txt \
+  && chmod +x /opt/prometheus-nexus-exporter/exporter.py
 
 EXPOSE 9158
 
