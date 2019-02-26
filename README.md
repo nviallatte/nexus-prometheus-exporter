@@ -17,7 +17,7 @@ python app/exporter.py example/config.yml
 #### Using docker
 
 ```
-docker run -p 9158:9158 -v $(pwd)/example/config.yml:/etc/prometheus-nexus-exporter/config.yml nviallatte/prometheus-nexus-exporter /etc/prometheus-nexus-exporter/config.yml
+docker run -p 9158:9158 -v $(pwd)/app/config.yml:/etc/prometheus-nexus-exporter/config.yml nviallatte/prometheus-nexus-exporter /etc/prometheus-nexus-exporter/config.yml
 ```
 
 ### Config
@@ -25,10 +25,10 @@ docker run -p 9158:9158 -v $(pwd)/example/config.yml:/etc/prometheus-nexus-expor
 ```yml
 exporter_port: 9158 # Port on which prometheu can call this exporter to get metrics
 namespace: nexus
-host: <host_header> # Override Host Header if wanted
+host: <host_header> # Override Host Header if wanted (Useful on Kubernetes platforms)
 log_level: debug|info|warn|error
 json_data_url: <url_with_scheme> # Url to get json data used for fetching metric values, and with the /service/metrics/data
-basic_auth_user: <username> # User to connect to Nexus. Optional, leave empty for empty Basic auth
+basic_auth_user: <username> # User to connect to Nexus. Optional, leave empty for none (actually, the Nexus3 user)
 basic_auth_password: <password>
 metric_name_prefix: nexus # All metric names will be prefixed with this value
 metrics: # Default JSON metrics from /service/metrics/data
@@ -53,7 +53,7 @@ This is a Json example retrieved from the Nexus 3 data endpoint. The `config.yml
 	"jvm.buffers.direct.count": {
       "value": 68
     },
-    "..."
+    "...",
     "meters": {
 	  "com.sonatype.nexus.analytics.internal.ui.EventsComponent.clear.exceptions": {
 	    "count": 0,
@@ -72,14 +72,14 @@ This is a Json example retrieved from the Nexus 3 data endpoint. The `config.yml
         "units": "events/second"
       },
       "..."
-	}
+    }
   }
 }
 ```
 
 ### Usage
 
-Metrics will available in http://localhost:9158
+Metrics are available in http://localhost:9158
 ```
 $ curl -s localhost:9158 | grep ^nexus
 nexus_log_count{level="info"} 6387.0
